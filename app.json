@@ -1,6 +1,6 @@
 {
   "name": "Custom Activity",
   "description": "A barebones Journey Builder Custom Activity example.",
-  "repository": "https://github.com/salesforce-marketingcloud/sfmc-example-jb-custom-activity",
+  "repository": "https://github.com/Solsolol/UrlcustomMC",
   "keywords": ["node", "express", "static"]
 }
