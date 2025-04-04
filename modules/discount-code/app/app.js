@@ -116,8 +116,9 @@ module.exports = function discountCodeExample(app, options) {
      * 5xx - Contact is ejected from the Journey.
      */
     app.post('/modules/discount-code/execute', function(req, res) {
-        console.log('debug: /modules/discount-code/execute');
-
+        console.log('Execute endpoint called');
+        console.log('Request body:', JSON.stringify(req.body, null, 2));
+        
         const request = req.body;
 
         console.log(" req.body", JSON.stringify(req.body));
@@ -168,4 +169,9 @@ module.exports = function discountCodeExample(app, options) {
         return res.status(200).json(responseObject);
     });
 
+    app.post('/modules/discount-code/save', function(req, res) {
+        console.log('Save endpoint called');
+        console.log('Request body:', JSON.stringify(req.body, null, 2));
+        return res.status(200).json({});
+    });
 };
