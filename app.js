@@ -2,6 +2,19 @@ const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser')
 
+const app = express();
+
+// Add detailed logging
+app.use((req, res, next) => {
+    console.log('Incoming request:', {
+        method: req.method,
+        path: req.path,
+        headers: req.headers,
+        body: req.body
+    });
+    next();
+});
+
 // Add this before other routes
 app.get('/ping', (req, res) => {
     res.status(200).send('pong');
@@ -11,8 +24,6 @@ const submodules = [
     require('./modules/discount-code/app/app'),
     require('./modules/discount-redemption-split/app/app'),
 ];
-
-const app = express();
 
 // Add these headers before other middleware
 app.use((req, res, next) => {
@@ -55,5 +66,6 @@ app.use((err, req, res, next) => {
 });
 
 app.listen(app.get('port'), function() {
-    console.log(`Express is running at localhost: ${app.get('port')}`);
+    console.log(`Express is running at port: ${app.get('port')}`);
+    console.log('Environment:', process.env.NODE_ENV);
 });
